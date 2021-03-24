@@ -1,0 +1,89 @@
+
+
+MYSQL
+
+Subquery 3가지 유형
+
+1. WHERE절에서 사용되는 Subquery
+2. Having절에서 사용되는 Subquery
+3. From절에서 사용되는 Subquery
+
+
+Subquery는 단일행 연산자와 함께 사용 되기도 하고, 다중행 연산자와 함께 사용 되기도 한다.
+
+단일행 : = 1+ > < >= <=
+다중행 : IN, ANY, ALL
+
+Subquery는 질의를 해결하는 쿼리
+괄호로 쌓아 먼저 해결하는 것
+괄호 안의 값이 나오면 전체 Main Query에서 돌아간다.
+
+
+Subquery 사용 지침
+
+1. 괄호로 둘러싸야 한다.
+2. 비교 연산자의 오른쪽에 있어야 한다.
+3. ORDER BY 절을 포함하지 말아야 한다.
+
+
+e.g. 급여를 3000 이상 받는 사원이 소속된 부서와 동일한 부서에서 근무하는 사원을 검색
+
+SELECT deptno, ename 
+FROM emp 
+WHERE deptno 
+IN 
+(SELECT DISTINCT deptno FROM emp WHERE sal >= 3000); // 질의 조건은 급여를 3000 이상 받는 사원의 소속 부서
+
+
+그 외
+
+그룹함수는 중첩이 안된다.
+
+e.g. MIN(AVG(sal)) // MySQL에서는 에러가 발생한다. (오라클은 실행 가능)
+
+테이블이 리턴되는 서브쿼리는 반드시 Alias를 지정해야한다.
+
+
+다중행 서브쿼리
+
+결과 값으로 여러행이 나오는 서브쿼리
+
+단일 연산자를 사용해 조건으로 사용할 수 없고, 다중 연산자를 사용해야 한다.
+
+ANY - 메인쿼리의 비교조건이 서브쿼리 결과와 하나이상만 일치하면 참이 된다.
+ALL - 메인쿼리의 비교조건이 서브쿼리 결과와 모든 값이 일치하면 참이 됨
+IN - 여러개 중에서 같은 값을 찾읍
+
+
+> ANY - 최소값보다 많음 (안에 있는 어떠한 값보다 크면 되기 때문)
+< ANY - 최대값보다 작음 (안에 있는 어떠한 값보다 작으면 되기 때문) 
+
+> ALL - 최대값보다 많음
+< ALL - 최소값보다 작음
+
+
+
+JDBC
+
+3 Tier
+
+기존 2 Tier는 client와 DB를 직접 연결하여 access를 했었다.
+3 Tier는 GUI를 가지고 있는 Client가 Application을 가지고 있는 Server에 데이터를 보내고, Server가 데이터를 DB를 access 하는 형태이다.
+
+Server - DB 연결 방법
+- JDBC를 통해 연결
+
+Client - Server 연결 방법
+
+  - Client Protocol 생성
+  - 데이터를 Server로 전송할 Command 객체 생성
+  - Server ProtocolHandler 생성
+  - Server JuryThread생성
+  - Thread를 통해 Server가 데이터를 받고 결과값을 다시 리턴
+  - Command객체를 다시 Client로 toss하여 결과값 리턴
+  
+  
+
+
+
+

@@ -1,0 +1,54 @@
+
+
+Associate Enitity의 속성
+
+1. Quantity
+2. PK 지정 여부
+  - 안하게 되면 AE가 가지고 있는 모든 다른 정보들을 조합하여 이해하게 된다.
+  - PK를 지정하게 되면 해당 PK로 AE를 이해하게 된다.
+  
+  
+  개념적 모델링
+    - Entitiy 추출
+  논리적 모델링
+    1. Entity 관계지정
+    2. 속성 -> 정규
+  물리적 모델링
+    - 실제 테이블 생성
+    
+    
+   우리가 getPortfolio를 먼저 만든 이유
+      - 이후 작성할 메소드에서 사용할 것이기 때문이다.
+      - 항상 다른 메소드에 포함 될 예정인 메소드를 먼저 작성하는 습관을 들이자.
+      
+      
+  Associate Entity Foreign Key 설정 관련
+  
+      - 부모 Entity를 삭제 하더라도 (DELETE) 자식 Associate Entity에는 부모로 부터 가져온 Foreign Key 데이터가 그대로 남아 있었다.
+      - Foreign Key를 설정하지 않아 각각 독립적인 Entity였기 때문.
+      - Foreign Key를 성정하여 Entity를 연결해줄 필요성이 있음.
+      
+  관계형 DB
+      - Foreign Key를 통해 연결하는 DB/Entity
+      - Foreign Key를 제공하는 쪽이 부모, 받는 쪽이 자식
+      - desc 기능을 통해 MUL key가 확인이 되면 Foreign Key를 받은것이다.
+      
+      -"자식을 가진 부모는 삭제될 수 없다."
+        - 자식을 먼저 삭제하고 부모를 삭제해야 한다.
+          - shares delete -> cutomer delete
+          - ON DELETE CASCADE
+        - 자식의 값에 null을 setting하고 부모를 삭제한다.
+          - ON DELETE SET null
+         
+   Project Stateholders는 다음과 같은 사람들을 이야기한다.
+    1. 의뢰인
+    2. 개발자
+    3. 사용자
+    
+   UseCase Diagram
+    - 항상 사용자 입장에서 원하는 시스템을 기능 중심의 간단한 view로 표현하는 것을 목표로 하자.
+    
+   Class Diagram
+    - 작성 시, ObjectAid Tool를 절대 쓰지 말 것
+    - Class Diagram에서 확인하고자 하는 것은 class간의 relationship이며, 그 외의 detail한 사항(field, method 등)은 표시하지 않는 방향으로...
+    

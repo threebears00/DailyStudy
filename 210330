@@ -1,0 +1,70 @@
+
+
+// Web
+
+
+// 주요 내용
+
+// 1. Servlet
+// 2. 정적/동적 문서
+// 3. WAS (Web Application Server)
+
+
+// Servlet과 java의 차이점
+// - Servlet은 WAS안에서 실행
+// - 브라우저로부터 요청이 들어와야 동작
+// - java는 JVM 안에서 실행
+
+
+// Browser가 WAS에 Request를 하면 WAS 안의 Servelt이 작동 하고 DAO를 거쳐 DB에 값을 전달 한다.
+// 이후 응답(Response)을 위해 반대 경로로도 작동한다.
+
+
+// jsp 파일을 WAS에서 실행해야 하므로 WAS안으로 이동 시켜야 한다.
+// jsp 파일이 WAS안에서 실행 되면 비로소 브라우저에서 요청이 가능하다.
+// 요청을 하게 되면 jsp파일을 불러오게 되고 브라우저에서 표시가 된다.
+
+// 해당 프로세스는 Eclipse에서 제공되는 기능을 통해 자동으로 진행 된다.
+// Eclipse는 통합 개발 환경 툴이므로, 자동으로 진행해 주는 기능이 있다.
+
+
+// Eclipse가 자동으로 해준 것은 무엇인가?
+
+// 1. jsp 파일을 WAS경로로 배포(Deploy)
+  // 1. WAS안의 Webapps 폴더로 배포
+// 2. 서버 가동
+  //  기본적으로 서버는 Stop 상태임
+// 3. 요청 주소 생성
+
+
+// Application이란 무엇인가?
+// Static과 Dynamic Document를 합친 것을 Application이라고 한다.
+
+
+// Static Document
+  // 화면, 이미지 등
+  // HTML, CSS
+  // WebContent 폴더 밑에 배포 됨
+// Dynamic Document
+  // 프로그램
+  // Servlet, java, jsp
+  // Java Resources - src 폴더 밑에 배포 됨
+  
+  
+// 요청 주소 구조
+  // http://ip주소.포트번호/프로젝트명/jsp명
+  // 요청 주소에서 프로젝트명을 ContextPath라고 부른다.
+  // ContextPath = Web Application Root
+  // 스크립트들은 ContextPath 기준으로 배포 된다.
+  
+  // 입력 된 주소가 요청이고, 브라우저에서 뜨는 창이 응답 결과이다.
+  
+  
+// 요청이란?
+// 서버(WAS)에 존재하는 파일 혹은 페이지를 요청하는 것
+// 요청 한 파일이 있기 때문에 응답을 해서 브라우저에 표시할 수 있는 것
+// html에 있는 <body>부분이 응답으로 나간다.
+  
+  
+  
+  
